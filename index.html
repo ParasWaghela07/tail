@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text{
+            transition: 2s;
+            
+        }
+        .addAnimate1{
+            animation: left 2s;
+        }
+        .addAnimate2{
+            animation: right 2s;
+        }
+        @keyframes right {
+            0%{
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100%{
+                opacity: 100;
+            }
+        }
+        @keyframes left {
+            0%{
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100%{
+                opacity: 100;
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <p id="text">Hello World</p>
+    <button id="btn1" class="bg-red-500">left</button>
+    <button id="btn2">right</button>
+</body>
+<script>
+    const btn1=document.querySelector('#btn1');
+    const btn2=document.querySelector('#btn2');
+    const text=document.querySelector('#text');
+
+    btn1.addEventListener('click',(e)=>{
+        text.classList.remove('addAnimate1','addAnimate2')
+        void text.offsetWidth;
+        const num=Math.floor(Math.random()*100);
+        text.classList.add('addAnimate1')
+        text.innerText="Hello Duniya "+num;
+    })
+    btn2.addEventListener('click',(e)=>{
+        text.classList.remove('addAnimate2','addAnimate1')
+        void text.offsetWidth;
+        const num=Math.floor(Math.random()*100);
+        text.classList.add('addAnimate2')
+        text.innerText="Hello Duniya "+num;
+    })
+</script>
+</html>
